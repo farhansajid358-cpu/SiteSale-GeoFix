@@ -12,12 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
     <style>
-      <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PTWKNZC8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
       :root{
         --purple:#7c3aed;
         --purple-dark:#6d28d9;
@@ -324,7 +318,7 @@
       /* ---------- Promo banner ---------- */
       .banner{
         margin-top:64px;background:var(--lav-banner);border-radius:28px;
-       padding:44px 48px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;
+        padding:44px 48px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;
 overflow:hidden;position:relative;
 }
 .banner h2{font-size:clamp(1.8rem,3.4vw,2.5rem);letter-spacing:-.025em;margin:14px 0 8px;font-weight:800}
@@ -363,4 +357,604 @@ padding:30px 34px;display:flex;align-items:center;gap:26px;flex-wrap:wrap;
 }
 .sub-left{display:flex;gap:16px;align-items:center;flex:1;min-width:260px}
 .sub-left .si{
-width:56px;height:56px;border-radius:16px;background:#fff;color
+width:56px;height:56px;border-radius:16px;background:#fff;color:var(--purple);
+display:grid;place-items:center;flex:none;box-shadow:var(--shadow);
+}
+.sub-left b{display:block;font-size:1.05rem;margin-bottom:3px}
+.sub-left span{font-size:.86rem;color:var(--muted)}
+.sub-form{display:flex;gap:12px;flex:1.2;min-width:290px}
+.sub-form input{
+flex:1;font:inherit;font-size:.93rem;border:1.5px solid transparent;border-radius:999px;
+padding:13px 20px;min-height:48px;outline:none;background:#fff;color:var(--ink);
+}
+.sub-form input:focus{border-color:var(--purple)}
+.sub-note{width:100%;font-size:.8rem;color:var(--muted);margin:0}
+
+/* ---------- Footer ---------- */
+footer{margin-top:64px;border-top:1px solid var(--line);padding:34px 0 10px}
+.foot{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.foot .tag{font-size:.82rem;color:var(--muted);margin-top:5px}
+.foot-links{display:flex;gap:28px;margin:0 auto;flex-wrap:wrap}
+.foot-links a{font-size:.9rem;font-weight:600;color:var(--ink-2);padding:10px 2px;min-height:44px;display:inline-flex;align-items:center}
+.foot-links a:hover{color:var(--purple)}
+.socials{display:flex;gap:10px}
+.socials a{
+width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;
+display:grid;place-items:center;
+}
+.socials a:hover{background:var(--purple)}
+.copy{text-align:center;font-size:.82rem;color:var(--muted);padding:22px 0 14px}
+
+/* ---------- About / Contact pages ---------- */
+[hidden]{display:none !important}
+.page-view{padding:52px 0 6px}
+.page-title{
+font-size:clamp(2.1rem,4.2vw,3.2rem);line-height:1.1;letter-spacing:-.03em;
+margin:20px 0 16px;font-weight:800;max-width:22ch;
+}
+.page-title .accent{color:var(--purple)}
+.page-lead{font-size:1.05rem;line-height:1.7;color:var(--muted);max-width:62ch;margin:0 0 16px}
+.page-lead b{color:var(--ink-2)}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:38px 0 8px}
+.about-card{
+background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+box-shadow:var(--shadow);padding:26px 24px;
+}
+.about-card .tool-icon{margin-bottom:14px}
+.about-card h3{margin:0 0 8px;font-size:1.15rem;letter-spacing:-.02em}
+.about-card p{margin:0;font-size:.92rem;line-height:1.6;color:var(--muted)}
+.tools-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.tools-list button{
+display:flex;align-items:center;gap:13px;text-align:left;width:100%;
+background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+box-shadow:var(--shadow);padding:16px 18px;cursor:pointer;font:inherit;color:var(--ink);
+transition:border-color .15s ease,background .15s ease;
+}
+.tools-list button:hover{border-color:var(--purple);background:var(--lav-soft)}
+.tools-list .tl-num{
+width:38px;height:38px;border-radius:12px;background:var(--lav);color:var(--purple);
+display:grid;place-items:center;font-weight:800;font-size:.85rem;flex:none;
+}
+.tools-list b{display:block;font-size:.95rem;letter-spacing:-.01em}
+.tools-list span{display:block;font-size:.8rem;color:var(--muted);font-weight:600;margin-top:2px;line-height:1.45}
+.free-banner{
+margin-top:44px;background:var(--lav-banner);border-radius:28px;padding:38px 42px;
+display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;
+}
+.free-banner h2{font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.025em;margin:12px 0 8px;font-weight:800}
+.free-banner p{margin:0;color:var(--ink-2);font-size:.98rem;line-height:1.6}
+.free-points{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.free-points li{
+display:flex;align-items:center;gap:10px;font-size:.93rem;font-weight:600;color:var(--ink-2);
+background:rgba(255,255,255,.75);border-radius:12px;padding:12px 15px;
+}
+.free-points .tick{
+width:22px;height:22px;border-radius:50%;background:var(--purple);color:#fff;flex:none;
+display:grid;place-items:center;
+}
+.page-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.contact-card{
+background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+box-shadow:var(--shadow);padding:30px 28px;max-width:720px;
+}
+.contact-card .btn{width:100%;margin-top:5px}
+.contact-note{font-size:.85rem;color:var(--muted);line-height:1.55;margin:14px 0 0}
+.contact-note.err{color:var(--bad);font-weight:700}
+.contact-note.ok{color:var(--good);font-weight:700}
+.email-line{
+max-width:720px;margin-top:22px;background:var(--lav-soft);border:1px solid var(--line);
+border-radius:var(--r-md);padding:20px 24px;display:flex;align-items:center;gap:15px;flex-wrap:wrap;
+}
+.email-line .si{
+width:48px;height:48px;border-radius:14px;background:#fff;color:var(--purple);
+display:grid;place-items:center;flex:none;box-shadow:var(--shadow);
+}
+.email-line b{display:block;font-size:.95rem;margin-bottom:2px}
+.email-line a{font-size:.95rem;font-weight:800;color:var(--purple);overflow-wrap:anywhere}
+.email-line a:hover{color:var(--purple-dark);text-decoration:underline}
+@media (max-width:1020px){
+.about-grid{grid-template-columns:1fr;max-width:560px}
+.tools-list{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:860px){
+.free-banner{grid-template-columns:1fr;padding:30px 26px}
+}
+@media (max-width:560px){
+.tools-list{grid-template-columns:1fr}
+.contact-card{padding:24px 20px}
+.page-view{padding-top:38px}
+}
+
+@media (max-width:1020px){
+.tools-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+.why-grid{grid-template-columns:repeat(2,1fr)}
+.trust{grid-template-columns:repeat(2,1fr)}
+.trust-item:nth-child(3){border-left:0}
+.trust-item{border-top:1px solid var(--line)}
+.trust-item:nth-child(-n+2){border-top:0}
+}
+@media (max-width:860px){
+.nav-links{display:none}
+.hero{padding-top:36px}
+.hero-grid{grid-template-columns:1fr;gap:56px}
+.dash{margin:0 auto}
+.hero-visual{min-height:0;padding-bottom:10px}
+.phone{position:relative;left:auto;bottom:auto;width:160px;margin:-16px 0 0 10px}
+.fb-1{left:0}
+.banner{grid-template-columns:1fr;padding:36px 28px}
+.banner-cards{height:180px;max-width:480px}
+.subscribe{padding:26px 22px}
+}
+@media (max-width:560px){
+.wrap{padding:0 18px}
+.trust{grid-template-columns:1fr}
+.trust-item + .trust-item{border-left:0;border-top:1px solid var(--line)}
+.why-grid{grid-template-columns:1fr 1fr;gap:14px}
+.sec-head{flex-direction:column;align-items:flex-start;gap:4px}
+.hero-ctas{gap:14px}
+.phone{width:148px}
+.dash-main{flex-direction:column;align-items:flex-start}
+.dash-rows{width:100%}
+.bcard{width:132px;padding:12px}
+.bc-2{margin-left:-66px}
+.sub-form{flex-direction:column}
+.sub-form .btn{width:100%}
+.foot{justify-content:center;text-align:center}
+.foot .brand{margin:0 auto}
+.foot-links{margin:0 auto;justify-content:center}
+.socials{margin:0 auto}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*{transition:none !important}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap nav">
+<a class="brand" href="#top" data-nav="home" aria-label="SiteSale GeoFix home">
+  <span class="brand-mark" aria-hidden="true">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  </span>
+  <span>SiteSale <em>GeoFix</em></span>
+</a>
+<nav class="nav-links" aria-label="Main">
+  <a href="#top" class="active" data-nav="home">Home</a>
+  <a href="#tools" data-nav="tools">Tools</a>
+  <a href="#about" data-nav="about">About</a>
+  <a href="#contact" data-nav="contact">Contact</a>
+</nav>
+<div class="nav-actions">
+  <a class="icon-btn" href="#tools" aria-label="Search tools">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+  </a>
+  <a class="btn small" href="#tools" data-nav="tools">Get Started</a>
+</div>
+</div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<div class="hero">
+<div class="wrap hero-grid">
+  <div>
+    <span class="pill"><span class="dot"></span> 12 Free Online Tools — Bilkul Free</span>
+    <h1>12 Powerful Tools, <span class="accent">Ek Hi Jagah Free</span></h1>
+    <p class="lead">SEO check, website value, AdSense income, QR code, image compressor, YouTube thumbnail, strong password, dollar rate aur age calculator — barah free tools, bina sign-up ke, result seconds mein.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="#tools">Start Checking
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <button class="demo-btn" type="button" id="demoBtn">
+        <span class="play">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+        </span>
+        Try a Demo
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <div class="blob"></div>
+    <svg class="spark spark-1" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 4v6M1 7h6M20 15v6M17 18h6"/></svg>
+    <div class="float-badge fb-1">
+      <span class="fi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20"/><path d="m9 3 3 6 3-6"/></svg>
+      </span>
+      High Accuracy
+    </div>
+    <div class="dash">
+      <div class="dash-top">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="dash-title">SEO OVERVIEW</span>
+      </div>
+      <div class="dash-main">
+        <div class="ring-wrap">
+          <svg width="118" height="118" viewBox="0 0 118 118">
+            <circle class="ring-bg" cx="59" cy="59" r="50" fill="none" stroke-width="11"/>
+            <circle class="ring-fg" cx="59" cy="59" r="50" fill="none" stroke-width="11" stroke-dasharray="314" stroke-dashoffset="44"/>
+          </svg>
+          <div class="ring-num"><b>86</b><small>SEO SCORE</small></div>
+        </div>
+        <div class="dash-rows">
+          <div class="dash-row">
+            <div class="lbl"><span>US Traffic</span><b>60%</b></div>
+            <div class="bar"><i style="width:60%"></i></div>
+          </div>
+          <div class="dash-row">
+            <div class="lbl"><span>UK Traffic</span><b>25%</b></div>
+            <div class="bar"><i class="alt" style="width:25%"></i></div>
+          </div>
+          <div class="dash-row">
+            <div class="lbl"><span>PK Traffic</span><b>15%</b></div>
+            <div class="bar"><i class="alt2" style="width:15%"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-checks">
+        <div class="dash-check">
+          <span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          Title length perfect hai
+        </div>
+        <div class="dash-check">
+          <span class="tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          Keyword title mein mojood hai
+        </div>
+      </div>
+    </div>
+    <div class="phone">
+      <div class="phone-in">
+        <span class="ph-title">TRAFFIC QUALITY</span>
+        <span class="ph-big">92<span>/100</span></span>
+        <div class="mini-bar"><i style="width:92%"></i></div>
+        <span class="ph-note">Bounce rate acha hai, asli log lag rahe hain.</span>
+      </div>
+    </div>
+    <div class="float-badge fb-2">
+      <span class="fi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5z"/></svg>
+      </span>
+      Instant Results
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="trust">
+    <div class="trust-item">
+      <span class="ti"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20"/><path d="m9 3 3 6 3-6"/></svg></span>
+      <div><b>Accurate Checks</b><span>Clear, rule-based scoring</span></div>
+    </div>
+    <div class="trust-item">
+      <span class="ti"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5z"/></svg></span>
+      <div><b>Instant Results</b><span>Result seconds mein</span></div>
+    </div>
+    <div class="trust-item">
+      <span class="ti"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <div><b>Secure &amp; Private</b><span>Data kahin save nahi hota</span></div>
+    </div>
+    <div class="trust-item">
+      <span class="ti"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>
+      <div><b>Always Free</b><span>Koi sign-up nahi chahiye</span></div>
+    </div>
+    </div>
+</div>
+</div>
+
+<!-- TOOLS -->
+<section class="block" id="tools">
+<div class="wrap">
+<div class="sec-head">
+  <div>
+    <div class="sec-label">Free Tools</div>
+    <h2 class="sec-title">Explore Our Popular Tools</h2>
+  </div>
+  <a class="view-all" href="#tools">View All Tools
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </a>
+</div>
+
+<div class="tools-grid">
+  <!-- TOOL 1 -->
+  <article class="tool" id="tool1">
+    <span class="tool-num">TOOL 01</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v3l2 2"/></svg>
+    </div>
+    <h3>US SEO Checker</h3>
+    <p class="tool-sub">Title, meta description aur keyword check karke US SEO score hasil karein.</p>
+    <form id="form1" novalidate>
+      <div class="field">
+        <label for="t1_url">Website URL</label>
+        <input id="t1_url" type="url" inputmode="url" placeholder="https://example.com" autocomplete="url" />
+      </div>
+      <div class="field">
+        <label for="t1_title">Page Title <span class="count" id="c_title">0 / 60</span></label>
+        <input id="t1_title" type="text" placeholder="Page Title" />
+      </div>
+      <div class="field">
+        <label for="t1_desc">Meta Description <span class="count" id="c_desc">0 / 160</span></label>
+        <textarea id="t1_desc" placeholder="Meta Description"></textarea>
+      </div>
+      <div class="field">
+        <label for="t1_kw">Main Keyword for US</label>
+        <input id="t1_kw" type="text" placeholder="Main Keyword for US" />
+      </div>
+      <button class="btn" type="submit">Check SEO
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="result" id="r1" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 2 -->
+  <article class="tool" id="tool2">
+    <span class="tool-num">TOOL 02</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    </div>
+    <h3>Geo Traffic Analyzer</h3>
+    <p class="tool-sub">Dekhein aap ka kitna percent traffic target country se aa raha hai.</p>
+    <form id="form2" novalidate>
+      <div class="field">
+        <label for="t2_total">Total Visitors</label>
+        <input id="t2_total" type="number" min="0" inputmode="numeric" placeholder="Total Visitors - jese 1000" />
+      </div>
+      <div class="field">
+        <label for="t2_target" id="t2_target_label">US Visitors</label>
+        <input id="t2_target" type="number" min="0" inputmode="numeric" placeholder="US Visitors - jese 600" />
+      </div>
+      <div class="field">
+        <label for="t2_country">Target Country</label>
+        <select id="t2_country">
+          <option value="US" selected>Target Country: US</option>
+          <option value="UK">Target Country: UK</option>
+          <option value="PK">Target Country: Pakistan</option>
+        </select>
+      </div>
+      <button class="btn" type="submit">Analyze Traffic
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="result" id="r2" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 3 -->
+  <article class="tool" id="tool3">
+    <span class="tool-num">TOOL 03</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+    </div>
+    <h3>Traffic Quality Check</h3>
+    <p class="tool-sub">Bounce rate aur time on site se pata karein traffic asli hai ya bot ka shak hai.</p>
+    <form id="form3" novalidate>
+      <div class="field">
+        <label for="t3_vis">Total Visitors</label>
+        <input id="t3_vis" type="number" min="0" inputmode="numeric" placeholder="Total Visitors" />
+      </div>
+      <div class="field">
+        <label for="t3_bounce">Bounce Rate %</label>
+        <input id="t3_bounce" type="number" min="0" max="100" inputmode="numeric" placeholder="Bounce Rate % - jese 40" />
+      </div>
+      <div class="field">
+        <label for="t3_time">Avg Time on Site (Seconds)</label>
+        <input id="t3_time" type="number" min="0" inputmode="numeric" placeholder="Avg Time on Site in Seconds - jese 120" />
+      </div>
+      <button class="btn" type="submit">Check Quality
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="result" id="r3" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 4 -->
+  <article class="tool" id="tool4">
+    <span class="tool-num">TOOL 04</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5.5H9.6a3.3 3.3 0 0 0 0 6.6h4.8a3.3 3.3 0 0 1 0 6.6H6"/></svg>
+    </div>
+    <h3>Website Value Calculator</h3>
+    <p class="tool-sub">Monthly traffic aur revenue se andaza lagayein ke aap ki website kitne ki bik sakti hai.</p>
+    <form id="form4" novalidate>
+      <div class="field">
+        <label for="t4_vis">Monthly Visitors</label>
+        <input id="t4_vis" type="number" min="0" inputmode="numeric" placeholder="Monthly Visitors - jese 50000" />
+      </div>
+      <div class="field">
+        <label for="t4_rev">Monthly Revenue ($)</label>
+        <input id="t4_rev" type="number" min="0" step="any" inputmode="decimal" placeholder="Monthly Revenue $ - jese 500" />
+      </div>
+      <div class="field">
+        <label for="t4_age">Domain Age (Years)</label>
+        <input id="t4_age" type="number" min="0" step="any" inputmode="decimal" placeholder="Domain Age - jese 3 (optional)" />
+      </div>
+      <button class="btn" type="submit">Calculate Value
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="result" id="r4" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 5 -->
+  <article class="tool" id="tool5">
+    <span class="tool-num">TOOL 05</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+    </div>
+    <h3>AdSense Earnings Calculator</h3>
+    <p class="tool-sub">Pageviews, CTR aur CPC se rozana, mahana aur salana AdSense income ka estimate lagayein.</p>
+    <form id="form5" novalidate>
+      <div class="field">
+        <label for="t5_views">Daily Pageviews</label>
+        <input id="t5_views" type="number" min="0" inputmode="numeric" placeholder="Daily Pageviews - jese 5000" />
+      </div>
+      <div class="field">
+        <label for="t5_ctr">CTR %</label>
+        <input id="t5_ctr" type="number" min="0" max="100" step="any" inputmode="decimal" placeholder="CTR % - jese 1.5" />
+      </div>
+      <div class="field">
+        <label for="t5_cpc">Average CPC ($)</label>
+        <input id="t5_cpc" type="number" min="0" step="any" inputmode="decimal" placeholder="Average CPC $ - jese 0.25" />
+      </div>
+      <button class="btn" type="submit">Calculate Earnings
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="result" id="r5" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 6 -->
+  <article class="tool" id="tool6">
+    <span class="tool-num">TOOL 06</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+    </div>
+    <h3>Keyword Density Checker</h3>
+    <p class="tool-sub">Apna text paste karein aur dekhein keyword kitni dafa aur kitne percent use hua hai.</p>
+    <form id="form6" novalidate>
+      <div class="field">
+        <label for="t6_text">Your Text</label>
+        <textarea id="t6_text" style="min-height:120px" placeholder="Apna article ya page ka text yahan paste karein"></textarea>
+      </div>
+      <div class="field">
+        <label for="t6_kw">Keyword</label>
+        <input id="t6_kw" type="text" placeholder="Keyword - jese running shoes" />
+      </div>
+      <button class="btn" type="submit">Check Density
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </form>
+    <div class="result" id="r6" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 7 -->
+  <article class="tool" id="tool7">
+    <span class="tool-num">TOOL 07</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM21 14v.01M14 21v.01M18 18h3v3h-3z"/></svg>
+    </div>
+    <h3>Free QR Code Generator — Link, Text ya WiFi ka QR Banao</h3>
+    <p class="tool-sub">Dukaan, restaurant ya apni website ke liye seconds mein QR code banayein aur PNG download karein.</p>
+    <form id="form7" novalidate>
+      <div class="field">
+        <label for="t7_type">QR Type</label>
+        <select id="t7_type">
+          <option value="text" selected>Link / Text</option>
+          <option value="wifi">WiFi</option>
+        </select>
+      </div>
+      <div id="t7_text_fields">
+        <div class="field">
+          <label for="t7_text">Link ya Text</label>
+          <input id="t7_text" type="text" placeholder="https://yourwebsite.com ya koi bhi text" />
+        </div>
+      </div>
+      <div id="t7_wifi_fields" style="display:none">
+        <div class="field"><label for="t7_ssid">WiFi Name (SSID)</label><input id="t7_ssid" type="text" placeholder="WiFi ka naam" /></div>
+        <div class="field"><label for="t7_pass">WiFi Password</label><input id="t7_pass" type="text" placeholder="WiFi password" /></div>
+        <div class="field"><label for="t7_enc">Security Type</label><select id="t7_enc"><option value="WPA" selected>WPA / WPA2</option><option value="WEP">WEP</option><option value="nopass">No Password</option></select></div>
+      </div>
+      <button class="btn" type="submit">QR Code Banao</button>
+    </form>
+    <div class="result" id="r7" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 8 -->
+  <article class="tool" id="tool8">
+    <span class="tool-num">TOOL 08</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.5-3.5L6 23"/></svg>
+    </div>
+    <h3>Image Compressor — Photo Size Chhota Karo, Quality Waisi Ki Waisi</h3>
+    <p class="tool-sub">Bari photo upload karein, size kam karein aur website ya WhatsApp ke liye ready download karein.</p>
+    <form id="form8" novalidate>
+      <div class="field">
+        <label class="file-drop" for="t8_file"><b>Photo Select Karein</b><span>JPG, PNG ya WebP — click karke choose karein</span><input id="t8_file" type="file" accept="image/*" /></label>
+      </div>
+      <div class="field">
+        <label for="t8_quality">Quality: <span id="t8_qval">75%</span></label>
+        <div class="range-row"><input id="t8_quality" type="range" min="10" max="95" value="75" /><span class="range-val" id="t8_qval2">75%</span></div>
+      </div>
+      <div class="field">
+        <label for="t8_maxw">Max Width (px)</label>
+        <select id="t8_maxw"><option value="original" selected>Original Size</option><option value="1920">1920 px</option><option value="1280">1280 px</option><option value="800">800 px</option></select>
+      </div>
+      <button class="btn" type="submit">Compress Karo</button>
+    </form>
+    <div class="result" id="r8" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 9 -->
+  <article class="tool" id="tool9">
+    <span class="tool-num">TOOL 09</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 8.2a2.8 2.8 0 0 0-2-2C18.3 5.8 12 5.8 12 5.8s-6.3 0-8 .4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1.6 12 29 29 0 0 0 2 15.8a2.8 2.8 0 0 0 2 2c1.7.4 8 .4 8 .4s6.3 0 8-.4a2.8 2.8 0 0 0 2-2 29 29 0 0 0 .4-3.8 29 29 0 0 0-.4-3.8z"/><path d="M9.8 15.1V8.9L15.3 12z" fill="currentColor" stroke="none"/></svg>
+    </div>
+    <h3>YouTube Thumbnail Downloader — Kisi Bhi Video ka Thumbnail HD Mein Lo</h3>
+    <p class="tool-sub">Video ka link paste karein, HD thumbnail dekhein aur ek click mein download karein.</p>
+    <form id="form9" novalidate>
+      <div class="field">
+        <label for="t9_url">YouTube Video Link</label>
+        <input id="t9_url" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=..." />
+      </div>
+      <button class="btn" type="submit">Thumbnail Nikalo</button>
+    </form>
+    <div class="result" id="r9" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 10 -->
+  <article class="tool" id="tool10">
+    <span class="tool-num">TOOL 10</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1.6" fill="currentColor"/></svg>
+    </div>
+    <h3>Strong Password Generator — Hack Na Hone Wala Password Banao</h3>
+    <p class="tool-sub">Length aur options choose karein, mazboot password banayein aur ek click mein copy karein.</p>
+    <form id="form10" novalidate>
+      <div class="field">
+        <label for="t10_len">Password Length: <span id="t10_lenval">16</span></label>
+        <div class="range-row"><input id="t10_len" type="range" min="8" max="64" value="16" /><span class="range-val" id="t10_lenval2">16</span></div>
+      </div>
+      <div class="field">
+        <label>Options</label>
+        <div class="toggle-row">
+          <button type="button" class="toggle-chip" id="t10_upper" aria-pressed="true">ABC Baray Letters</button>
+          <button type="button" class="toggle-chip" id="t10_nums" aria-pressed="true">123 Numbers</button>
+          <button type="button" class="toggle-chip" id="t10_syms" aria-pressed="true">#$&amp; Symbols</button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="t10_out">Aap Ka Password</label>
+        <input id="t10_out" class="pwd-out" type="text" readonly placeholder="Generate dabayein, password yahan aayega" />
+      </div>
+      <div class="btn-row">
+        <button class="btn" type="submit">Generate Karo</button>
+        <button class="btn secondary" type="button" id="t10_copy">Copy Karo</button>
+      </div>
+    </form>
+    <div class="result" id="r10" role="status" aria-live="polite"></div>
+  </article>
+
+  <!-- TOOL 11 -->
+  <article class="tool" id="tool11">
+    <span class="tool-num">TOOL 11</span>
+    <div class="tool-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h10l-3-3M17 14H7l3 3"/><path d="M12 3v1M12 20v1"/></svg>
+    </div>
+    <h3>Dollar to PKR Converter — Aaj ka Rate, Foran Hisab</h3>
+    <p class="tool-sub">Dollar likhein, rupees mein foran amount milay ga. Live rate auto ayega, na mile to apna rate daal dein.</p>
+    <form id="form11" novalidate>
+      <div class="field">
+        <label for="t11_usd">Amount in Dollar (USD $)</label>
+        <input id="t11_usd" type="number" min="0" step="any" inputmode="decimal" placeholder="Jese 100" />
+      </div>
+      <div class="field">
+        <label for="t11_rate">Rate — 1 USD = PKR</label>
+        <input id="t11_rate" type="number" min="0" step="any" inputmode="decimal" placeholder="Live rate load ho raha hai..." />
+      </div>
+      <button class="btn" type="submit" id="t11_btn">Convert Karo</button>
+      <p class="rate-note" id="t11_note">Rate live lenay ki koshish ho rahi hai. Agar na mile to upar apna rate likh kar Convert karein.</p>
+    </form>
+    <div class="result" id="r11" role="status" aria-live="polite"></div>
+  </article>
