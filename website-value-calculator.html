@@ -76,13 +76,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         box-shadow:0 6px 14px rgba(124,58,237,.35);
       }
       .brand span em{font-style:normal;color:var(--purple)}
-      .nav-links{display:flex;gap:30px;margin:0 auto}
-      .nav-links a{font-size:.92rem;font-weight:600;color:var(--ink-2);padding:10px 2px;position:relative}
-      .nav-links a.active{color:var(--purple)}
-      .nav-links a.active::after{
-        content:"";position:absolute;left:0;right:0;bottom:2px;height:3px;border-radius:3px;background:var(--purple);
-      }
-      .nav-links a:hover{color:var(--purple)}
       .nav-actions{display:flex;align-items:center;gap:14px}
       .icon-btn{
         width:40px;height:40px;border-radius:50%;border:0;background:transparent;cursor:pointer;
@@ -485,7 +478,6 @@ display:grid;place-items:center;flex:none;box-shadow:var(--shadow);
 .trust-item:nth-child(-n+2){border-top:0}
 }
 @media (max-width:860px){
-.nav-links{display:none}
 .hero{padding-top:36px}
 .hero-grid{grid-template-columns:1fr;gap:56px}
 .dash{margin:0 auto}
@@ -521,9 +513,43 @@ html{scroll-behavior:auto}
 }
 .tools-list a{display:flex;align-items:center;gap:13px;text-align:left;width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow);padding:16px 18px;cursor:pointer;font:inherit;color:var(--ink);transition:border-color .15s ease,background .15s ease}
 .tools-list a:hover{border-color:var(--purple);background:var(--lav-soft)}
+
+/* ---------- Pinterest-style left rail + top search ---------- */
+body{padding-left:76px}
+.side-rail{position:fixed;left:0;top:0;bottom:0;width:76px;z-index:60;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0 18px;background:var(--bg);border-right:1px solid var(--line)}
+.side-rail .rail-brand{margin-bottom:10px}
+.side-rail .brand-mark{width:42px;height:42px;border-radius:12px}
+.rail-link{position:relative;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:var(--ink-2);flex:none}
+.rail-link:hover{background:var(--lav-soft);color:var(--purple)}
+.rail-link.active{background:var(--lav);color:var(--purple)}
+.rail-link.rail-bottom{margin-top:auto}
+.rail-link::after{content:attr(data-label);position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%) translateX(-4px);background:var(--ink);color:#fff;font-size:.78rem;font-weight:600;line-height:1;padding:7px 11px;border-radius:999px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:70}
+.rail-link:hover::after,.rail-link:focus-visible::after{opacity:1;transform:translateY(-50%) translateX(0)}
+header .brand{display:none}
+.top-search{flex:1;display:flex;align-items:center;gap:10px;background:#efefef;border-radius:999px;padding:0 8px 0 16px;min-height:48px}
+.top-search svg{color:var(--muted);flex:none}
+.top-search input{flex:1;min-width:0;border:0;background:transparent;outline:none;box-shadow:none!important;font:inherit;font-size:.95rem;color:var(--ink);padding:0;min-height:44px}
+.top-search input::placeholder{color:var(--muted)}
+.search-empty{margin:6px 0 26px;text-align:center;font-weight:700;color:var(--muted)}
+@media (max-width:767px){
+body{padding-left:0}
+.side-rail{display:none}
+header .brand{display:flex}
+header .brand>span:last-child{display:none}
+}
 </style>
 </head>
 <body>
+<nav class="side-rail" aria-label="Site navigation">
+<a class="rail-brand" href="https://sitesale-geofix.pages.dev/" aria-label="SiteSale GeoFix home"><span class="brand-mark" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span></a>
+<a class="rail-link" href="https://sitesale-geofix.pages.dev/" data-label="Home" aria-label="Home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></a>
+<a class="rail-link active" href="https://sitesale-geofix.pages.dev/#tools" data-label="Tools" aria-label="Tools"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></a>
+<a class="rail-link" href="articles.html" data-label="Article" aria-label="Article"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></a>
+<a class="rail-link" href="how-to-check-website-visitors.html" data-label="Guide" aria-label="Guide"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></a>
+<a class="rail-link" href="https://sitesale-geofix.pages.dev/#about" data-label="About" aria-label="About"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></a>
+<a class="rail-link" href="https://sitesale-geofix.pages.dev/#contact" data-label="Contact" aria-label="Contact"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></a>
+<a class="rail-link rail-bottom" href="privacy-policy.html" data-label="Privacy Policy" aria-label="Privacy Policy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></a>
+</nav>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTWKNZC8"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -536,17 +562,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </span>
   <span>SiteSale <em>GeoFix</em></span>
 </a>
-<nav class="nav-links" aria-label="Main">
-  <a href="https://sitesale-geofix.pages.dev/">Home</a>
-  <a href="https://sitesale-geofix.pages.dev/#tools">Tools</a>
-  <a href="https://sitesale-geofix.pages.dev/#about">About</a>
-  <a href="https://sitesale-geofix.pages.dev/#contact">Contact</a>
-</nav>
+<div class="top-search">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+<input type="search" id="top-search" placeholder="Search tools..." aria-label="Search tools">
+</div>
 <div class="nav-actions">
-  <a class="icon-btn" href="https://sitesale-geofix.pages.dev/#tools" aria-label="Search tools">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-  </a>
-  <a class="btn small" href="https://sitesale-geofix.pages.dev/#tools">Get Started</a>
+<a class="btn small" href="https://sitesale-geofix.pages.dev/#tools">Get Started</a>
 </div>
 </div>
 </header>
@@ -595,6 +616,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="block">
 <div class="wrap">
+<div class="sec-head"><div>
+<div class="sec-label">Guide</div>
+<h2 class="sec-title">What the Website Value Calculator Does</h2>
+</div></div>
+<div style="max-width:780px;line-height:1.75;color:var(--ink-2)">
+<p>Thinking of selling your website, or wondering what it is worth? This free calculator gives you an instant value estimate from three numbers: your monthly visitors, your monthly revenue in dollars and your domain age in years.</p>
+<p>The result is an estimate based on the numbers you enter. It is not a verified valuation, and a real sale price depends on many more things, such as steady traffic, real revenue records and the topic of the site.</p>
+<p>What goes into the estimate? Buyers usually pay for two things: the traffic a site already gets, and the money it already earns. A site with 50,000 monthly visitors and steady income is worth far more than a site with the same visitors and no income. Domain age helps a little, because an older domain usually has more history and links. But the number on screen is only a starting point. A buyer will also look at where the traffic comes from, whether the income is stable, and whether the site breaks any rules.</p>
+<h3>How to use the Website Value Calculator</h3>
+<ol>
+<li>Enter your monthly visitors.</li>
+<li>Enter your monthly revenue in dollars.</li>
+<li>Add your domain age in years if you know it - it is optional - then click Calculate Value.</li>
+</ol>
+<h3>Tips for a better estimate</h3>
+<ul>
+<li>Traffic and revenue matter most - a site that earns money every month is worth more than one that only gets visits.</li>
+<li>Keep records of your income, because a buyer will ask for proof.</li>
+<li>Use the estimate as a starting point for talks, not as a final price.</li>
+<li>Clean up the site before you value it - broken pages and copied content push the price down.</li>
+</ul>
+<h3>Who is it for?</h3>
+<p>Website owners planning to sell, and buyers who want a quick check before making an offer. It also helps bloggers who are curious about what their years of work are worth, even if they are not selling yet.</p>
+</div>
+</div>
+</section>
+
+<section class="block">
+<div class="wrap">
+<div class="sec-head"><div>
+<div class="sec-label">FAQ</div>
+<h2 class="sec-title">Frequently Asked Questions</h2>
+</div></div>
+<div style="max-width:780px">
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>Is the Website Value Calculator free?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">Yes, free with no sign-up.</p>
+</div>
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>Is the value exact?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">No. It is an estimate from the numbers you enter. A real sale price also depends on traffic quality, revenue proof and the buyer.</p>
+</div>
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>What makes a website worth more?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">Steady traffic, real monthly revenue, an older domain and a clean history usually increase the value.</p>
+</div>
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>Do I need to sign up?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">No. Just open the page and use the tool.</p>
+</div>
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>Is my data saved anywhere?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">No. The numbers are used in your browser only.</p>
+</div>
+</div>
+</div>
+</section>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the Website Value Calculator free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, free with no sign-up."}}, {"@type": "Question", "name": "Is the value exact?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is an estimate from the numbers you enter. A real sale price also depends on traffic quality, revenue proof and the buyer."}}, {"@type": "Question", "name": "What makes a website worth more?", "acceptedAnswer": {"@type": "Answer", "text": "Steady traffic, real monthly revenue, an older domain and a clean history usually increase the value."}}, {"@type": "Question", "name": "Do I need to sign up?", "acceptedAnswer": {"@type": "Answer", "text": "No. Just open the page and use the tool."}}, {"@type": "Question", "name": "Is my data saved anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. The numbers are used in your browser only."}}]}
+</script>
+
+<section class="block">
+<div class="wrap">
 <div class="sec-head">
 <div>
   <div class="sec-label">More Free Tools</div>
@@ -634,6 +718,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="foot-links" aria-label="Footer">
 <a href="https://sitesale-geofix.pages.dev/">Home</a>
 <a href="https://sitesale-geofix.pages.dev/#tools">Tools</a>
+<a href="articles.html">Article</a>
 <a href="https://sitesale-geofix.pages.dev/#about">About</a>
 <a href="https://sitesale-geofix.pages.dev/#contact">Contact</a>
 <a href="https://sitesale-geofix.pages.dev/privacy-policy.html">Privacy Policy</a>
@@ -728,5 +813,16 @@ document.getElementById("form4").addEventListener("submit", function(e){
 })();
 </script>
 <!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a2a495eb93640af8f2fce3081c64654"}'></script><!-- Cloudflare Pages Analytics -->
+
+<script>
+/* ---------- Top search: Enter jumps to the tools on the homepage ---------- */
+(function(){
+  var box=document.getElementById("top-search");
+  if(!box) return;
+  box.addEventListener("keydown",function(e){
+    if(e.key==="Enter"){e.preventDefault();window.location.href="index.html#tools";}
+  });
+})();
+</script>
 </body>
 </html>

@@ -75,13 +75,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         box-shadow:0 6px 14px rgba(124,58,237,.35);
       }
       .brand span em{font-style:normal;color:var(--purple)}
-      .nav-links{display:flex;gap:30px;margin:0 auto}
-      .nav-links a{font-size:.92rem;font-weight:600;color:var(--ink-2);padding:10px 2px;position:relative}
-      .nav-links a.active{color:var(--purple)}
-      .nav-links a.active::after{
-        content:"";position:absolute;left:0;right:0;bottom:2px;height:3px;border-radius:3px;background:var(--purple);
-      }
-      .nav-links a:hover{color:var(--purple)}
       .nav-actions{display:flex;align-items:center;gap:14px}
       .icon-btn{
         width:40px;height:40px;border-radius:50%;border:0;background:transparent;cursor:pointer;
@@ -262,6 +255,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .result.show{display:block}
       .result.error{background:var(--bad-bg);color:#7f1d1d;font-size:.9rem;font-weight:600;line-height:1.55}
       .result.ok-panel{background:var(--lav-soft)}
+      .full-page-link{margin:16px 0 0;font-size:.9rem;font-weight:700}
+      .full-page-link a{color:var(--purple)}
+      .full-page-link a:hover{text-decoration:underline}
       .score-line{display:flex;align-items:center;gap:16px;margin-bottom:14px}
       .score-ring{position:relative;width:74px;height:74px;flex:none}
       .score-ring svg{transform:rotate(-90deg)}
@@ -484,7 +480,6 @@ display:grid;place-items:center;flex:none;box-shadow:var(--shadow);
 .trust-item:nth-child(-n+2){border-top:0}
 }
 @media (max-width:860px){
-.nav-links{display:none}
 .hero{padding-top:36px}
 .hero-grid{grid-template-columns:1fr;gap:56px}
 .dash{margin:0 auto}
@@ -518,9 +513,52 @@ display:grid;place-items:center;flex:none;box-shadow:var(--shadow);
 html{scroll-behavior:auto}
 *{transition:none !important}
 }
+
+/* ---------- Side dots rail ---------- */
+.side-dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:18px;margin:0;padding:0}
+.side-dots a{position:relative;display:block;width:12px;height:12px;border-radius:50%;background:#d8d5e2;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2);transition:background .2s ease,transform .2s ease}
+.side-dots a:hover{background:var(--purple)}
+.side-dots a.active{background:var(--purple);transform:scale(1.35)}
+.side-dots a::after{content:attr(data-label);position:absolute;right:26px;top:50%;transform:translateY(-50%) translateX(4px);background:var(--ink);color:#fff;font-size:.78rem;font-weight:600;line-height:1;padding:6px 11px;border-radius:999px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.side-dots a:hover::after,.side-dots a:focus-visible::after{opacity:1;transform:translateY(-50%) translateX(0)}
+@media (max-width:767px){.side-dots{display:none}}
+
+/* ---------- Pinterest-style left rail + top search ---------- */
+body{padding-left:76px}
+.side-rail{position:fixed;left:0;top:0;bottom:0;width:76px;z-index:60;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0 18px;background:var(--bg);border-right:1px solid var(--line)}
+.side-rail .rail-brand{margin-bottom:10px}
+.side-rail .brand-mark{width:42px;height:42px;border-radius:12px}
+.rail-link{position:relative;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:var(--ink-2);flex:none}
+.rail-link:hover{background:var(--lav-soft);color:var(--purple)}
+.rail-link.active{background:var(--lav);color:var(--purple)}
+.rail-link.rail-bottom{margin-top:auto}
+.rail-link::after{content:attr(data-label);position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%) translateX(-4px);background:var(--ink);color:#fff;font-size:.78rem;font-weight:600;line-height:1;padding:7px 11px;border-radius:999px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:70}
+.rail-link:hover::after,.rail-link:focus-visible::after{opacity:1;transform:translateY(-50%) translateX(0)}
+header .brand{display:none}
+.top-search{flex:1;display:flex;align-items:center;gap:10px;background:#efefef;border-radius:999px;padding:0 8px 0 16px;min-height:48px}
+.top-search svg{color:var(--muted);flex:none}
+.top-search input{flex:1;min-width:0;border:0;background:transparent;outline:none;box-shadow:none!important;font:inherit;font-size:.95rem;color:var(--ink);padding:0;min-height:44px}
+.top-search input::placeholder{color:var(--muted)}
+.search-empty{margin:6px 0 26px;text-align:center;font-weight:700;color:var(--muted)}
+@media (max-width:767px){
+body{padding-left:0}
+.side-rail{display:none}
+header .brand{display:flex}
+header .brand>span:last-child{display:none}
+}
 </style>
 </head>
 <body>
+<nav class="side-rail" aria-label="Site navigation">
+<a class="rail-brand" href="#top" data-nav="home" aria-label="SiteSale GeoFix home"><span class="brand-mark" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span></a>
+<a class="rail-link active" href="#top" data-nav="home" data-label="Home" aria-label="Home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></a>
+<a class="rail-link" href="#tools" data-nav="tools" data-label="Tools" aria-label="Tools"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></a>
+<a class="rail-link" href="articles.html" data-label="Article" aria-label="Article"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></a>
+<a class="rail-link" href="how-to-check-website-visitors.html" data-label="Guide" aria-label="Guide"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></a>
+<a class="rail-link" href="#about" data-nav="about" data-label="About" aria-label="About"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></a>
+<a class="rail-link" href="#contact" data-nav="contact" data-label="Contact" aria-label="Contact"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></a>
+<a class="rail-link rail-bottom" href="privacy-policy.html" data-label="Privacy Policy" aria-label="Privacy Policy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></a>
+</nav>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTWKNZC8"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -534,20 +572,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </span>
   <span>SiteSale <em>GeoFix</em></span>
 </a>
-<nav class="nav-links" aria-label="Main">
-  <a href="#top" class="active" data-nav="home">Home</a>
-  <a href="#tools" data-nav="tools">Tools</a>
-  <a href="#about" data-nav="about">About</a>
-  <a href="#contact" data-nav="contact">Contact</a>
-</nav>
+<div class="top-search">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+<input type="search" id="top-search" placeholder="Search tools..." aria-label="Search tools">
+</div>
 <div class="nav-actions">
-  <a class="icon-btn" href="#tools" aria-label="Search tools">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-  </a>
-  <a class="btn small" href="#tools" data-nav="tools">Get Started</a>
+<a class="btn small" href="#tools" data-nav="tools">Get Started</a>
 </div>
 </div>
 </header>
+
+<!-- Side dots rail: one dot per section -->
+<nav class="side-dots" aria-label="Page sections">
+<a href="#top" data-nav="home" data-label="Home" aria-label="Home"></a>
+<a href="#tools" data-nav="tools" data-label="Tools" aria-label="Tools"></a>
+<a href="#about" data-nav="about" data-label="About" aria-label="About"></a>
+<a href="#contact" data-nav="contact" data-label="Contact" aria-label="Contact"></a>
+</nav>
 
 <main id="top">
 <!-- HERO -->
@@ -701,6 +742,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </form>
     <div class="result" id="r1" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="seo-checker.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 2 -->
@@ -733,6 +775,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </form>
     <div class="result" id="r2" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="geo-traffic-analyzer.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 3 -->
@@ -761,6 +804,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </form>
     <div class="result" id="r3" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="traffic-quality-check.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 4 -->
@@ -789,6 +833,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </form>
     <div class="result" id="r4" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="website-value-calculator.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 5 -->
@@ -817,6 +862,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </form>
     <div class="result" id="r5" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="adsense-earnings-calculator.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 6 -->
@@ -841,6 +887,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </form>
     <div class="result" id="r6" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="keyword-density-checker.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 7 -->
@@ -873,6 +920,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn" type="submit">Create QR Code</button>
     </form>
     <div class="result" id="r7" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="qr-code-generator.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 8 -->
@@ -898,6 +946,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn" type="submit">Compress</button>
     </form>
     <div class="result" id="r8" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="image-compressor.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 9 -->
@@ -916,6 +965,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn" type="submit">Get Thumbnail</button>
     </form>
     <div class="result" id="r9" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="youtube-thumbnail-downloader.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 10 -->
@@ -949,6 +999,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </form>
     <div class="result" id="r10" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="password-generator.html">Open full page &rarr;</a></p>
   </article>
 
   <!-- TOOL 11 -->
@@ -972,6 +1023,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="rate-note" id="t11_note">Trying to fetch the live rate. If it doesn't load, enter your own rate above and click Convert.</p>
     </form>
     <div class="result" id="r11" role="status" aria-live="polite"></div>
+    <p class="full-page-link"><a href="usd-to-pkr-converter.html">Open full page &rarr;</a></p>
   </article>
   <!-- TOOL 12 -->
 <article class="tool" id="tool12">
@@ -993,8 +1045,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="btn" type="submit">Tell My Age</button>
   </form>
   <div class="result" id="r12" role="status" aria-live="polite"></div>
+  <p class="full-page-link"><a href="age-calculator.html">Open full page &rarr;</a></p>
 </article>
 </div>
+<p class="search-empty" id="search-empty" hidden>No tools found — try a different search.</p>
 
 <!-- PROMO BANNER -->
 <div class="banner">
@@ -1231,8 +1285,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="foot-links" aria-label="Footer">
 <a href="#top" data-nav="home">Home</a>
 <a href="#tools" data-nav="tools">Tools</a>
+<a href="articles.html">Article</a>
 <a href="#about" data-nav="about">About</a>
 <a href="#contact" data-nav="contact">Contact</a>
+<a href="privacy-policy.html">Privacy Policy</a>
+<a href="how-to-check-website-visitors.html">How to Check Website Visitors</a>
 </nav>
 <div class="socials">
 <a href="#top" aria-label="Pinterest"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.7 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.6 2.2-.9 3.4-.2 1 .5 1.8 1.5 1.8 1.8 0 3.2-1.9 3.2-4.7 0-2.4-1.8-4.1-4.3-4.1a4.4 4.4 0 0 0-4.5 4.4c0 .9.3 1.8.8 2.3.1.1.1.2.1.3l-.3 1.1c0 .2-.2.2-.4.1-1.2-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.7-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.5-2.2 6.3-5.3 6.3-1 0-2-.5-2.3-1.2l-.6 2.4c-.2.9-.8 2-1.2 2.6A10 10 0 1 0 12 2z"/></svg></a>
@@ -1794,7 +1851,7 @@ var CONTACT_EMAIL = "farhansajid358@gmail.com";
 var homeView = document.getElementById("top");
 var aboutView = document.getElementById("view-about");
 var contactView = document.getElementById("view-contact");
-var navAnchors = document.querySelectorAll(".nav-links a[data-nav]");
+var navAnchors = document.querySelectorAll(".side-rail a[data-nav]");
 
 function setActiveNav(name){
   navAnchors.forEach(function(a){
@@ -1873,9 +1930,66 @@ document.getElementById("subForm").addEventListener("submit", function(e){
   mailLink.remove();
   note.textContent = "Your email app has opened — just press Send. Thank you!";
 });
+
+/* ---------- Side dots rail: highlight active section on scroll ---------- */
+var sideDots = document.querySelectorAll(".side-dots a");
+var sideSections = {
+  home: document.getElementById("top"),
+  tools: document.getElementById("tools"),
+  about: document.getElementById("view-about"),
+  contact: document.getElementById("view-contact")
+};
+var sideVisible = {};
+function sideSetActive(name){
+  sideDots.forEach(function(d){
+    d.classList.toggle("active", d.getAttribute("data-nav") === name);
+  });
+}
+if("IntersectionObserver" in window && sideDots.length){
+  var sideObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ sideVisible[en.target.id] = en.isIntersecting; });
+    var order = [["tools","tools"],["about","view-about"],["contact","view-contact"],["home","top"]];
+    var current = "home";
+    for(var i = 0; i < order.length; i++){
+      if(sideVisible[order[i][1]]){ current = order[i][0]; break; }
+    }
+    sideSetActive(current);
+  }, {rootMargin:"-45% 0px -45% 0px"});
+  Object.keys(sideSections).forEach(function(k){
+    if(sideSections[k]){ sideObserver.observe(sideSections[k]); }
+  });
+  sideSetActive("home");
+}
 })();
 </script>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a2a495eb93640af8f2fce3081c64654"}'></script><!-- Cloudflare Pages Analytics --></body>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a2a495eb93640af8f2fce3081c64654"}'></script><!-- Cloudflare Pages Analytics --><!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a2a495eb93640af8f2fce3081c64654"}'></script><!-- Cloudflare Pages Analytics -->
+<script>
+/* ---------- Top search: live-filter tool cards ---------- */
+(function(){
+  var box=document.getElementById("top-search");
+  if(!box) return;
+  var cards=Array.prototype.slice.call(document.querySelectorAll("#tools .tool"));
+  var empty=document.getElementById("search-empty");
+  var tools=document.getElementById("tools");
+  function filter(){
+    var q=box.value.trim().toLowerCase();
+    var shown=0;
+    cards.forEach(function(c){
+      var h=c.querySelector("h3");
+      var t=h?h.textContent.toLowerCase():"";
+      var hit=!q||t.indexOf(q)>-1;
+      c.style.display=hit?"":"none";
+      if(hit) shown++;
+    });
+    if(empty) empty.hidden=shown>0;
+  }
+  box.addEventListener("input",filter);
+  box.addEventListener("keydown",function(e){
+    if(e.key==="Enter"){e.preventDefault();if(tools) tools.scrollIntoView();}
+  });
+})();
+</script>
+</body>
 </html>
 <!doctype html>
 <html lang="en">
@@ -1906,6 +2020,6 @@ document.getElementById("subForm").addEventListener("submit", function(e){
   <h2>Contact</h2>
   <p>Questions about this disclaimer: <a href="mailto:farhansajid358@gmail.com">farhansajid358@gmail.com</a></p>
   <p><a href="index.html">Back to SiteSale GeoFix</a></p>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a2a495eb93640af8f2fce3081c64654"}'></script><!-- Cloudflare Pages Analytics --></body>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a2a495eb93640af8f2fce3081c64654"}'></script><!-- Cloudflare Pages Analytics --><!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a2a495eb93640af8f2fce3081c64654"}'></script><!-- Cloudflare Pages Analytics --></body>
 </html>
 

@@ -76,13 +76,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         box-shadow:0 6px 14px rgba(124,58,237,.35);
       }
       .brand span em{font-style:normal;color:var(--purple)}
-      .nav-links{display:flex;gap:30px;margin:0 auto}
-      .nav-links a{font-size:.92rem;font-weight:600;color:var(--ink-2);padding:10px 2px;position:relative}
-      .nav-links a.active{color:var(--purple)}
-      .nav-links a.active::after{
-        content:"";position:absolute;left:0;right:0;bottom:2px;height:3px;border-radius:3px;background:var(--purple);
-      }
-      .nav-links a:hover{color:var(--purple)}
       .nav-actions{display:flex;align-items:center;gap:14px}
       .icon-btn{
         width:40px;height:40px;border-radius:50%;border:0;background:transparent;cursor:pointer;
@@ -485,7 +478,6 @@ display:grid;place-items:center;flex:none;box-shadow:var(--shadow);
 .trust-item:nth-child(-n+2){border-top:0}
 }
 @media (max-width:860px){
-.nav-links{display:none}
 .hero{padding-top:36px}
 .hero-grid{grid-template-columns:1fr;gap:56px}
 .dash{margin:0 auto}
@@ -521,9 +513,43 @@ html{scroll-behavior:auto}
 }
 .tools-list a{display:flex;align-items:center;gap:13px;text-align:left;width:100%;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow);padding:16px 18px;cursor:pointer;font:inherit;color:var(--ink);transition:border-color .15s ease,background .15s ease}
 .tools-list a:hover{border-color:var(--purple);background:var(--lav-soft)}
+
+/* ---------- Pinterest-style left rail + top search ---------- */
+body{padding-left:76px}
+.side-rail{position:fixed;left:0;top:0;bottom:0;width:76px;z-index:60;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0 18px;background:var(--bg);border-right:1px solid var(--line)}
+.side-rail .rail-brand{margin-bottom:10px}
+.side-rail .brand-mark{width:42px;height:42px;border-radius:12px}
+.rail-link{position:relative;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:var(--ink-2);flex:none}
+.rail-link:hover{background:var(--lav-soft);color:var(--purple)}
+.rail-link.active{background:var(--lav);color:var(--purple)}
+.rail-link.rail-bottom{margin-top:auto}
+.rail-link::after{content:attr(data-label);position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%) translateX(-4px);background:var(--ink);color:#fff;font-size:.78rem;font-weight:600;line-height:1;padding:7px 11px;border-radius:999px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:70}
+.rail-link:hover::after,.rail-link:focus-visible::after{opacity:1;transform:translateY(-50%) translateX(0)}
+header .brand{display:none}
+.top-search{flex:1;display:flex;align-items:center;gap:10px;background:#efefef;border-radius:999px;padding:0 8px 0 16px;min-height:48px}
+.top-search svg{color:var(--muted);flex:none}
+.top-search input{flex:1;min-width:0;border:0;background:transparent;outline:none;box-shadow:none!important;font:inherit;font-size:.95rem;color:var(--ink);padding:0;min-height:44px}
+.top-search input::placeholder{color:var(--muted)}
+.search-empty{margin:6px 0 26px;text-align:center;font-weight:700;color:var(--muted)}
+@media (max-width:767px){
+body{padding-left:0}
+.side-rail{display:none}
+header .brand{display:flex}
+header .brand>span:last-child{display:none}
+}
 </style>
 </head>
 <body>
+<nav class="side-rail" aria-label="Site navigation">
+<a class="rail-brand" href="https://sitesale-geofix.pages.dev/" aria-label="SiteSale GeoFix home"><span class="brand-mark" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span></a>
+<a class="rail-link" href="https://sitesale-geofix.pages.dev/" data-label="Home" aria-label="Home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></a>
+<a class="rail-link active" href="https://sitesale-geofix.pages.dev/#tools" data-label="Tools" aria-label="Tools"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></a>
+<a class="rail-link" href="articles.html" data-label="Article" aria-label="Article"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></a>
+<a class="rail-link" href="how-to-check-website-visitors.html" data-label="Guide" aria-label="Guide"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></a>
+<a class="rail-link" href="https://sitesale-geofix.pages.dev/#about" data-label="About" aria-label="About"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></a>
+<a class="rail-link" href="https://sitesale-geofix.pages.dev/#contact" data-label="Contact" aria-label="Contact"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></a>
+<a class="rail-link rail-bottom" href="privacy-policy.html" data-label="Privacy Policy" aria-label="Privacy Policy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></a>
+</nav>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTWKNZC8"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -536,17 +562,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </span>
   <span>SiteSale <em>GeoFix</em></span>
 </a>
-<nav class="nav-links" aria-label="Main">
-  <a href="https://sitesale-geofix.pages.dev/">Home</a>
-  <a href="https://sitesale-geofix.pages.dev/#tools">Tools</a>
-  <a href="https://sitesale-geofix.pages.dev/#about">About</a>
-  <a href="https://sitesale-geofix.pages.dev/#contact">Contact</a>
-</nav>
+<div class="top-search">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+<input type="search" id="top-search" placeholder="Search tools..." aria-label="Search tools">
+</div>
 <div class="nav-actions">
-  <a class="icon-btn" href="https://sitesale-geofix.pages.dev/#tools" aria-label="Search tools">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-  </a>
-  <a class="btn small" href="https://sitesale-geofix.pages.dev/#tools">Get Started</a>
+<a class="btn small" href="https://sitesale-geofix.pages.dev/#tools">Get Started</a>
 </div>
 </div>
 </header>
@@ -599,6 +620,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="block">
 <div class="wrap">
+<div class="sec-head"><div>
+<div class="sec-label">Guide</div>
+<h2 class="sec-title">What the QR Code Generator Does</h2>
+</div></div>
+<div style="max-width:780px;line-height:1.75;color:var(--ink-2)">
+<p>A QR code is a square barcode that a phone camera can read in a second. Point a phone at it and it opens a website, shows a text or joins a WiFi network without typing a long password. This free generator makes a QR code for a website link, any text or your WiFi network, and lets you download it as a PNG image to print or share anywhere.</p>
+<p>Why are QR codes still useful? Typing a long link on a phone is slow and full of mistakes. A QR code removes the typing: one scan opens the page, joins the network or shows the message. Shops print them on tables and bills, restaurants put them on menus, and events put them on tickets and posters. A printed code costs nothing and works as long as the link behind it stays live, which makes it one of the cheapest ways to connect paper to the internet.</p>
+<h3>How to use the QR Code Generator</h3>
+<ol>
+<li>Choose the QR type: link, text or WiFi.</li>
+<li>Type your link or text, or your WiFi name, password and security type.</li>
+<li>Click Create QR Code, then download the PNG.</li>
+</ol>
+<h3>Tips for a code that scans well</h3>
+<ul>
+<li>Test the code with your own phone before you print it.</li>
+<li>Use a short link so the code stays simple and easy to scan.</li>
+<li>Print it large enough - a tiny code on a poster is hard to scan.</li>
+<li>Keep a copy of the PNG file so you can print the same code again later.</li>
+</ul>
+<h3>Who is it for?</h3>
+<p>Shop and restaurant owners, event organisers, teachers and anyone who wants to share a link without typing. They are also handy for teachers sharing a worksheet link, and for anyone who wants to share WiFi with guests without reading out a long password.</p>
+</div>
+</div>
+</section>
+
+<section class="block">
+<div class="wrap">
+<div class="sec-head"><div>
+<div class="sec-label">FAQ</div>
+<h2 class="sec-title">Frequently Asked Questions</h2>
+</div></div>
+<div style="max-width:780px">
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>Is the QR Code Generator free?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">Yes, free with no sign-up.</p>
+</div>
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>Does the QR code expire?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">No. The code itself does not expire, but the link it points to must stay live.</p>
+</div>
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>Is my WiFi password sent anywhere?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">No. The QR code is created in your browser and your password is not uploaded or saved.</p>
+</div>
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>How do I download the QR code?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">Click the download button after creating it. The QR code saves as a PNG image you can print or share.</p>
+</div>
+<div style="border-top:1px solid var(--line);padding:18px 0">
+<h3>Do I need to sign up?</h3>
+<p style="margin:0;line-height:1.7;color:var(--ink-2)">No. Just open the page and use the tool.</p>
+</div>
+</div>
+</div>
+</section>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the QR Code Generator free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, free with no sign-up."}}, {"@type": "Question", "name": "Does the QR code expire?", "acceptedAnswer": {"@type": "Answer", "text": "No. The code itself does not expire, but the link it points to must stay live."}}, {"@type": "Question", "name": "Is my WiFi password sent anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. The QR code is created in your browser and your password is not uploaded or saved."}}, {"@type": "Question", "name": "How do I download the QR code?", "acceptedAnswer": {"@type": "Answer", "text": "Click the download button after creating it. The QR code saves as a PNG image you can print or share."}}, {"@type": "Question", "name": "Do I need to sign up?", "acceptedAnswer": {"@type": "Answer", "text": "No. Just open the page and use the tool."}}]}
+</script>
+
+<section class="block">
+<div class="wrap">
 <div class="sec-head">
 <div>
   <div class="sec-label">More Free Tools</div>
@@ -638,6 +721,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="foot-links" aria-label="Footer">
 <a href="https://sitesale-geofix.pages.dev/">Home</a>
 <a href="https://sitesale-geofix.pages.dev/#tools">Tools</a>
+<a href="articles.html">Article</a>
 <a href="https://sitesale-geofix.pages.dev/#about">About</a>
 <a href="https://sitesale-geofix.pages.dev/#contact">Contact</a>
 <a href="https://sitesale-geofix.pages.dev/privacy-policy.html">Privacy Policy</a>
@@ -735,5 +819,16 @@ document.getElementById("form7").addEventListener("submit", function(e){
 })();
 </script>
 <!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2a2a495eb93640af8f2fce3081c64654"}'></script><!-- Cloudflare Pages Analytics -->
+
+<script>
+/* ---------- Top search: Enter jumps to the tools on the homepage ---------- */
+(function(){
+  var box=document.getElementById("top-search");
+  if(!box) return;
+  box.addEventListener("keydown",function(e){
+    if(e.key==="Enter"){e.preventDefault();window.location.href="index.html#tools";}
+  });
+})();
+</script>
 </body>
 </html>
